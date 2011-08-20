@@ -19,6 +19,7 @@ def run(server_class=BaseHTTPServer.HTTPServer,
 
 class DumbHttpRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     server_version = "DumbHTTP/" + __version__
+    protocol_version = "HTTP/1.1"
 
     def do_GET(self):
         self.send_response(200)
