@@ -26,6 +26,9 @@ class DumbHttpRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.end_headers()
         print >> self.wfile, 'Request successful'
 
+    def do_POST(self):
+        self.do_GET()
+
 if __name__ == '__main__':
     port = 8000
     if len(sys.argv) > 2:
