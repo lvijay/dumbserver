@@ -22,10 +22,13 @@ class DumbHttpRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
 
     def do_GET(self):
+        response = 'Request successful'
         self.send_response(200)
         self.send_header('Content-Type', 'text/plain')
+        self.send_header('Content-Length', len(response))
         self.end_headers()
-        print >> self.wfile, 'Request successful'
+
+        self.wfile.write(response)
 
     def do_POST(self):
         self.do_GET()
